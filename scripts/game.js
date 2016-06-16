@@ -1,7 +1,7 @@
 //==  GAME UTILS  ============================================================//
 
 var resetStorage = false;
-var version = "0.97"; //to be used to reset testing computers
+var version = "0.92"; //to be used to reset testing computers
 
 function initGame(){
 	dragging = snapping             = false;
@@ -67,8 +67,7 @@ function loadGame(){
 			timeStarted = parseInt(localStorage.getItem("time"));
 			var testscoreFuncVersion = localStorage.getItem("scoreFuncVersion");
       gameMaxShapeLevel = localStorage.getItem("gameMaxShapeLevel");
-      //userLevel = localStorage.getItem("userLevel");
-      //currentBoardLevel = localStorage.getItem("currentBoardLevel");
+      gameLevel = localStorage.getItem("gameLevel");
 
 			if(scoreFuncVersion === testscoreFuncVersion)
 				highScore = parseInt(localStorage.getItem("highScore"));
@@ -92,8 +91,7 @@ function saveGame(){
 		localStorage.setItem("maxComboScore", maxComboScore);
 		localStorage.setItem("maxCombo", maxCombo);
 		localStorage.setItem("gameMaxShapeLevel", gameMaxShapeLevel);
-    //localStorage.setItem("userLevel", userLevel);
-    //localStorage.setItem("currentBoardLevel", currentBoardLevel);
+    localStorage.setItem("gameLevel", gameLevel);
 	}
 }
 
@@ -114,9 +112,7 @@ function addToScore(squareOrder,pieceOrder,combo){
 	var totalScore = parseInt(localStorage.getItem("totalScore"));
 	localStorage.setItem("totalScore", totalScore + points);
 	currentlyAnimating = true;
-  return  points;
 }
-
 var scoreFuncVersion = btoa(addToScore.toString());
 
 //==  ENTRY FUNCTION  ========================================================//

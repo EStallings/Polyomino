@@ -6,7 +6,7 @@ orderDecay         = true;
 allowRotations     = true;
 newPolyOnMerge     = false;
 paneThickness      = 2;
-gridSize           = 11;
+gridSize           = 9;
 largeGridSize      = gridSize;
 smallGridSize      = gridSize;
 cellSize           = 32; // may vary during runtime as the application SHOULD size grid cells according to window size.
@@ -16,10 +16,7 @@ hoverOffset        = 8;
 keyframeSpeed      = 100;//100;
 selectionOpacity   = 0.25;
 orderOfLastMerge   = 1;
-//userLevel          = 0;
-//currentBoardLevel  = 0;
-//GAME_LEVEL_MAX     = 10;
-
+gameLevel          = 1;
 
 //==  POLYOMINO COLORS  ======================================================//
 
@@ -49,7 +46,6 @@ var comboActiveCtr, comboCtr, maxCombo, currentComboScore, maxComboScore;
 var gameWon, gameLost;
 var highScore = 0; //in case first time visitor
 var timeStarted; //for fastest-game detection
-var gameMaxShapeLevel = 1
 
 //== GRID DIRECTION ==========================================================//
 

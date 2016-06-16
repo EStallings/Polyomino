@@ -1,8 +1,3 @@
-var KEYCODE_TAB = 9
-var KEYCODE_SPACE = 32
-var KEYCODE_ENTER = 13
-
-
 var mouse = {
 	x:0,
 	y:0,
@@ -27,7 +22,6 @@ function processInputs(){
 function handle_lDown(){
 	//check for lmb press
 	if(!evts.lDown) return;
-  //console.log("controls.handle_lDown()::  gameWon="+gameWon);
 	evts.lDown = false;
 	//check buttons
 	for(var b in buttons){
@@ -44,18 +38,16 @@ function handle_lDown(){
 		return; //no game input after losing
 	}
 	if(gameWon){
-    //console.log("     controls.handle_lDown()::  gameWonOverlayShown="+gameWonOverlayShown);
-    //if( gameWonOverlayShown) {
-    gameWon = false;
-      //newGame();
-//    }
-//    else {
-//
-//      //or while gameWon screen shows
-//      gameWonOverlayShown = true;
+    if( gameWonOverlayShown) {
+      newGame();
+    }
+    else {
+
+      //or while gameWon screen shows
+      gameWonOverlayShown = true;
       currentlyAnimating = true;
-//      return;
-//    }
+      return;
+    }
 	}
 	if(drawInstructions){
 		drawInstructions = false;
@@ -280,17 +272,7 @@ function setupControls(){
 	canvas.addEventListener("touchend"   , touchHandler);
 
 	document.addEventListener('keydown',function(e){
-
-    console.log("controls.keydown() charCode="+ e.charCode + ", keyCode="+ e.keyCode);
-
-    //Stackoverflow says space keycode is not 32 on all systems and in all browsers and that some use the
-    // usual enter key code (13).
-    if((e.keyCode === KEYCODE_SPACE) ||  (e.keyCode === KEYCODE_ENTER))  {
-      if(!dragging||snapping)return;
-      ++goalRot;
-    }
-
-		else if(e.keyCode === KEYCODE_TAB){
+		if(e.keyCode === 9){
 			e.preventDefault();
 			if(debugMode){
 				debugMouseDown = false;
